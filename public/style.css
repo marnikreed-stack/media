@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  margin-top: 80px;
+}
+
+h1 {
+  font-size: 40px;
+  background: linear-gradient(gold, white);
+ color: transparent;
+-webkit-text-fill-color: transparent;
+}
+
+p {
+  opacity: 0.8;
+}
+
+input {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  padding: 12px 25px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 30px;
+  background: gold;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#preview img,
+#preview video,
+#preview audio {
+  margin-top: 20px;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px gold;
+}
