@@ -8,7 +8,7 @@ async function uploadFile() {
 
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "media_upload");
+  formData.append("upload_preset", "media-upload");
 
   const res = await fetch(
     "https://api.cloudinary.com/v1_1/dsjcrmabo/upload",
@@ -20,6 +20,14 @@ async function uploadFile() {
 
   const data = await res.json();
 
+  console.log("Cloudinary response:", data);
+console.log("Error message:", data.error?.message);
+
+  if (!res.ok || !data.secure_url) {
+    alert(data.error?.message || "Upload failed");
+    return;
+  }
+
   const url = data.secure_url;
 
   document.getElementById("link").innerHTML =
@@ -29,11 +37,9 @@ async function uploadFile() {
 
   if (file.type.startsWith("image")) {
     preview.innerHTML = `<img src="${url}">`;
-  } 
-  else if (file.type.startsWith("video")) {
+  } else if (file.type.startsWith("video")) {
     preview.innerHTML = `<video src="${url}" controls></video>`;
-  } 
-  else if (file.type.startsWith("audio")) {
+  } else if (file.type.startsWith("audio")) {
     preview.innerHTML = `<audio src="${url}" controls></audio>`;
   }
 }

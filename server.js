@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // storage setup
 const storage = multer.diskStorage({
@@ -19,12 +19,7 @@ const upload = multer({ storage });
 app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 
-// upload route
-app.post("/upload", upload.single("media"), (req, res) => {
-  const fileUrl = `/uploads/${req.file.filename}`;
-  res.json({ url: fileUrl });
-});
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server rning on  ${PORT}`);
 });
